@@ -1,0 +1,16 @@
+{
+    "name": "quizbuddy",
+    "version": "1.0.0",
+    "description": "Chrome Extension for creating quizzes from web content",
+    "main": "background.js",
+    "scripts": {
+      "build": "tsc",
+      "watch": "tsc --watch"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "@types/chrome": "^0.0.246",
+      "typescript": "^5.1.6"
+    }
+  }

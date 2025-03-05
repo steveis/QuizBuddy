@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuizBuddy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="popup-header">
+      <img src="icons/icon48.png" alt="QuizBuddy Logo" class="logo">
+      <h1>QuizBuddy</h1>
+    </header>
+    
+    <!-- Authentication State -->
+    <div id="auth-container">
+      <div id="logged-out-view" class="auth-view">
+        <p>Sign in to create and take quizzes</p>
+        <button id="login-button" class="primary-button">Sign in with Google</button>
+      </div>
+      
+      <div id="logged-in-view" class="auth-view hidden">
+        <p>Signed in as: <span id="user-email"></span></p>
+        <button id="logout-button" class="secondary-button">Sign out</button>
+      </div>
+    </div>
+    
+    <!-- Main Actions -->
+    <div id="actions-container" class="hidden">
+      <button id="create-quiz-button" class="primary-button">
+        Create Quiz from Current Page
+      </button>
+      
+      <button id="open-dashboard-button" class="secondary-button">
+        Open Dashboard
+      </button>
+      
+      <div id="pdf-links-container" class="hidden">
+        <h2>PDF Links on this Page</h2>
+        <button id="highlight-pdfs-button" class="secondary-button">
+          Highlight PDF Links
+        </button>
+        <ul id="pdf-links-list"></ul>
+      </div>
+    </div>
+    
+    <!-- Quiz Creation State -->
+    <div id="quiz-creation-container" class="hidden">
+      <h2>Creating Quiz</h2>
+      <div id="creation-status">
+        <p id="status-message">Processing content...</p>
+        <div class="loader"></div>
+      </div>
+    </div>
+    
+    <!-- Quiz Taking State -->
+    <div id="quiz-taking-container" class="hidden">
+      <!-- Quiz content will be dynamically injected here -->
+    </div>
+    
+    <!-- Status Messages -->
+    <div id="status-container" class="hidden">
+      <p id="status-text"></p>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
