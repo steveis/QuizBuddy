@@ -8,7 +8,8 @@ const API_BASE_URL = 'https://api.quizbuddy.dev';
 // Get authentication token
 async function getAuthToken(): Promise<string | null> {
   try {
-    return await chrome.identity.getAuthToken({ interactive: true });
+    const result = await chrome.identity.getAuthToken({ interactive: true });
+    return result && result.token ? result.token : null;
   } catch (error) {
     console.error('Error getting auth token:', error);
     return null;

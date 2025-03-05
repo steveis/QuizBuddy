@@ -42,7 +42,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // Get current tab URL and title
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       const currentTab = tabs[0];
-      if (currentTab && currentTab.url && currentTab.title) {
+      if (currentTab && currentTab.url && currentTab.title && currentTab.id !== undefined) {
         // Get page content via content script
         chrome.tabs.sendMessage(currentTab.id, { action: 'getPageContent' }, (response) => {
           if (response && response.content) {
@@ -106,7 +106,8 @@ chrome.identity.onSignInChanged.addListener((account, signedIn) => {
 // Fetch user info from API
 async function fetchUserInfo() {
   try {
-    const token = await chrome.identity.getAuthToken({ interactive: true });
+    const result = await chrome.identity.getAuthToken({ interactive: true });
+    const token = result && result.token ? result.token : null;
     
     if (token) {
       // TODO: Implement actual API call to QuizBuddy backend

@@ -66,7 +66,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   // Process content for quiz generation
   function processContentForQuiz(element: HTMLElement): string {
     // Keep only the elements that contain content relevant for quizzes
-    const relevantContent = [];
+    const relevantContent: string[] = [];
     
     // Process headings, paragraphs, and lists
     const contentElements = element.querySelectorAll('h1, h2, h3, h4, h5, h6, p, ul, ol, li, table');

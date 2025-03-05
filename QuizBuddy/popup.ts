@@ -19,20 +19,26 @@ import {
     submitQuizAnswer,
     completeQuizAttempt
   } from './apiService';
+
+  interface PdfLink {
+    text?: string;
+    url: string;
+  }
   
   // DOM Elements
   const authContainer = document.getElementById('auth-container')!;
   const loggedOutView = document.getElementById('logged-out-view')!;
   const loggedInView = document.getElementById('logged-in-view')!;
   const userEmailElement = document.getElementById('user-email')!;
-  const loginButton = document.getElementById('login-button')!;
-  const logoutButton = document.getElementById('logout-button')!;
-  
+
+  const loginButton = document.getElementById('login-button') as HTMLButtonElement;
+  const logoutButton = document.getElementById('logout-button') as HTMLButtonElement;
+  const createQuizButton = document.getElementById('create-quiz-button') as HTMLButtonElement;
+  const openDashboardButton = document.getElementById('open-dashboard-button') as HTMLButtonElement;
+  const highlightPdfsButton = document.getElementById('highlight-pdfs-button') as HTMLButtonElement;
+
   const actionsContainer = document.getElementById('actions-container')!;
-  const createQuizButton = document.getElementById('create-quiz-button')!;
-  const openDashboardButton = document.getElementById('open-dashboard-button')!;
   const pdfLinksContainer = document.getElementById('pdf-links-container')!;
-  const highlightPdfsButton = document.getElementById('highlight-pdfs-button')!;
   const pdfLinksList = document.getElementById('pdf-links-list')!;
   
   const quizCreationContainer = document.getElementById('quiz-creation-container')!;
@@ -679,7 +685,7 @@ import {
             pdfLinksList.innerHTML = '';
             
             // Add each PDF link to the list
-            response.pdfLinks.forEach((link) => {
+            response.pdfLinks.forEach((link: PdfLink) => {
               const li = document.createElement('li');
               li.textContent = link.text || 'PDF Link';
               li.title = link.url;
